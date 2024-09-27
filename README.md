@@ -1,5 +1,11 @@
 # AEM Crypto Support Library
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/Netcentric/aem-crypto-support/maven.yml?branch=main)](https://github.com/Netcentric/aem-crypto-support/actions)
+[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)
+[![Maven Central](https://img.shields.io/maven-central/v/biz.netcentric.aem/aem-crypto-support)](https://search.maven.org/artifact/biz.netcentric.aem/aem-crypto-support)
+[![SonarCloud Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Netcentric_aem-crypto-support&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Netcentric_aem-crypto-support)
+[![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=Netcentric_aem-crypto-support&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Netcentric_aem-crypto-support)
+
 ## Overview
 
 This wrapper library allows to encrypt/decrypt with [AEM's CryptoSupport][aem-cryptosupport] outside AEM. The library provided by Adobe
