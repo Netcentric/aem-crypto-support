@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- the format of this file is described at http://jackrabbit.apache.org/filevault/filter.html -->
+<workspaceFilter version="1.0">
+    <filter root="/apps/foo"/>
+</workspaceFilter>
