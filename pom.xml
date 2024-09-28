@@ -253,6 +253,7 @@
                     <debug>false</debug>
                     <streamLogsOnFailures>true</streamLogsOnFailures>
                     <postBuildHookScript>verify</postBuildHookScript>
+                    <writeJunitReport>true</writeJunitReport>
                 </configuration>
                 <executions>
                     <execution>
