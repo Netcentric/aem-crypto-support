@@ -15,7 +15,7 @@ The encryption algorithm used internally is symmetrical **AES encryption (AES/CB
 
 ## Retrieve key from AEM environment
 
-The easiest way to retrieve the (usually auto-generated random) key from an AEM server is to leverage the [Groovy Console][groovyconsole]. The key is usually stored on the file system (either below the bundle data directory or in a directory given through OSGi property/environment variable with name `com.adobe.granite.crypto.keys.path`. It can be exposed with the following Groovy script.
+The easiest way to retrieve the (usually auto-generated random) key from an AEM server is to leverage the [Groovy Console][groovyconsole]. The key is usually stored on the file system (either below the bundle data directory or in a directory given through OSGi property/environment variable with name `com.adobe.granite.crypto.keys.path`). It can be exposed with the following Groovy script.
 
 ```
 org.osgi.framework.Bundle bundle = Arrays.asList(bundleContext.getBundles()).find { "com.adobe.granite.crypto.file".equals(it.getSymbolicName()) };
