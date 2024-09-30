@@ -30,6 +30,7 @@
     <properties>
         <customProperty>plainText</customProperty>
         <AEM_KEY>TXlTZWNyZXRLZXkxMjM0NQ==</AEM_KEY> <!-- base64 of "MySecretKey12345" -->
+        <AEM_KEY_CUSTOM>TXlTZWNyZXRLZXk1NDMyMQ==</AEM_KEY_CUSTOM> <!-- base64 of "MySecretKey54321" -->
     </properties>
     <build>
         <plugins>
