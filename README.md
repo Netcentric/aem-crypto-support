@@ -42,7 +42,7 @@ This library can be used as extension for the filevault-package-maven plugin or 
 
 This library can be used with [`filevault-package-maven-plugin`][filevault-package-maven-plugin] in version 1.4.0 or newer to allow [resource filtering][filevault-filtering] with encryption support. This is useful to create encrypted values in content packages.
 
-The key is looked up from either a Maven property with name `AEM_KEY` or a same named environment variable (in that order).
+The master key is looked up from either a Maven property with name `AEM_KEY` (or a same named environment variable) or `AEM_KEY_<SUFFIX>` in case a specific master key is referenced.
 
 #### Configuration of filevault-package-maven-plugin
 
@@ -75,6 +75,9 @@ The key is looked up from either a Maven property with name `AEM_KEY` or a same 
 ```
 
 This will encrypt the value provided through the environment variable `MY_SECRET`.
+
+In order to use specific keys (e.g. when targeting multiple environments with different master keys in the same build) use a suffix after `vltaemencrypt` like `vltaemencryptprod.env.MY_SECRET`.
+This will encrypt `MY_SECRET` with the master key provided in Maven property with name `AEM_KEY_PROD` or a same named environment variable (in that order). Note that the *suffix* (`prod` in this case) is automatically converted to uppercase letters before being used in the environment variable/property name.
 
 ### API 
 

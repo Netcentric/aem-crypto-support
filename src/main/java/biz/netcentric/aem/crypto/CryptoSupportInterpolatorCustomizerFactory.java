@@ -14,11 +14,13 @@ package biz.netcentric.aem.crypto;
  * #L%
  */
 
+import javax.annotation.PreDestroy;
 import javax.inject.Named;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 import org.apache.jackrabbit.filevault.maven.packaging.InterpolatorCustomizerFactory;
 import org.apache.maven.execution.MavenSession;
@@ -43,11 +45,17 @@ public class CryptoSupportInterpolatorCustomizerFactory implements InterpolatorC
 
     @Override
     public Consumer<Interpolator> create(MavenSession mavenSession, MavenProject mavenProject) {
-        Supplier<String> keySupplier = () -> {
-            String key = mavenProject.getProperties().getProperty(PROPERTY_NAME_KEY, System.getenv(PROPERTY_NAME_KEY));
+        UnaryOperator<String> keySupplier = id -> {
+            final String propertyName;
+            if (CryptoSupportInterpolatorCustomizer.DEFAULT_KEY_ID.equals(id)) {
+                propertyName = PROPERTY_NAME_KEY;
+            } else {
+                propertyName = PROPERTY_NAME_KEY + "_" + id.toUpperCase(Locale.ROOT);
+            }
+            String key = mavenProject.getProperties().getProperty(propertyName, System.getenv(propertyName));
             if (key == null) {
                 throw new IllegalStateException(
-                        "Could not find key in either Maven property or environment variable " + PROPERTY_NAME_KEY);
+                        "Could not find key in either Maven property or environment variable " + propertyName);
             }
             return key;
         };
@@ -57,5 +65,10 @@ public class CryptoSupportInterpolatorCustomizerFactory implements InterpolatorC
             i.addPostProcessor(customizer);
             i.addValueSource(customizer);
         };
+    }
+
+    @PreDestroy
+    public void close() throws IOException {
+        cryptoSupportFactory.close();
     }
 }
