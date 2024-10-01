@@ -34,7 +34,7 @@ The master key (base-64 encoded) is looked up from either a Maven property with 
   <dependencies>
     <dependency>
       <groupId>biz.netcentric.aem</groupId>
-      <artifactId>crypto-support</artifactId>
+      <artifactId>aem-crypto-support</artifactId>
       <version>1.0.0</version>
     </dependency>
   </dependencies>
