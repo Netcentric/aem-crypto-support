@@ -17,7 +17,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
     <developers>
         <developer>
             <id>konrad.windszus@netcentric.biz</id>
@@ -27,6 +26,12 @@
             <organizationUrl>https://www.netcentric.biz/</organizationUrl>
         </developer>
     </developers>
+
+    <scm>
+        <connection>scm:git:ssh://git@github.com:Netcentric/aem-crypto-support.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:Netcentric/aem-crypto-support.git</developerConnection>
+        <url>https://github.com/Netcentric/aem-crypto-support</url>
+    </scm>
 
     <distributionManagement>
         <repository>
@@ -45,6 +50,7 @@
         <!-- release sets API classpath, source and target, see  https://docs.oracle.com/javase/9/tools/javac.htm#GUID-AEEC9F07-CB49-4E96-8BC7-BCC2C7F725C9__GUID-D343F6B4-3FDD-43A8-AD24-43DD70214471  and http://openjdk.java.net/jeps/247 -->
         <maven.compiler.release>8</maven.compiler.release>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -124,6 +130,7 @@
             <url>https://repository.apache.org/content/repositories/snapshots/</url>
         </repository>
     </repositories>
+
     <build>
         <pluginManagement>
             <plugins>
@@ -336,6 +343,7 @@
             </plugin>
         </plugins>
     </build>
+
     <profiles>
         <profile>
             <id>jacoco-report</id>
