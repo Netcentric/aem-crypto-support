@@ -3,8 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>biz.netcentric.aem</groupId>
     <artifactId>aem-crypto-support</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
 
+    <version>1.0.1-SNAPSHOT</version>
+    <name>AEM Crypto Support Wrapper</name>
+    <description>Wrapper around AEM's Crypto Support with FileVault Filtering Extension</description>
+    <url>https://github.com/Netcentric/aem-crypto-support</url>
     <inceptionYear>2024</inceptionYear>
     <organization>
         <name>Cognizant Netcentric</name>
