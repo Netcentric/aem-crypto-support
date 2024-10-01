@@ -4,7 +4,7 @@
     <groupId>biz.netcentric.aem</groupId>
     <artifactId>aem-crypto-support</artifactId>
 
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>AEM Crypto Support Wrapper</name>
     <description>Wrapper around AEM's Crypto Support with FileVault Filtering Extension</description>
     <url>https://github.com/Netcentric/aem-crypto-support</url>
@@ -33,7 +33,7 @@
     <scm>
         <connection>scm:git:ssh://git@github.com/Netcentric/aem-crypto-support.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/Netcentric/aem-crypto-support.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>1.0.0</tag>
         <url>https://github.com/Netcentric/aem-crypto-support</url>
     </scm>
 
