@@ -71,10 +71,10 @@ The master key is looked up from either a Maven property with name `AEM_KEY` (or
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
   jcr:primaryType="nt:unstructured"
   ...
-  encryptedValue="${vltaemencrypt.env.MY_SECRET}" />
+  encryptedValue="${vltattributeescape.vltaemencrypt.env.MY_SECRET}" />
 ```
 
-This will encrypt the value provided through the environment variable `MY_SECRET`.
+This will encrypt the value provided through the environment variable `MY_SECRET` and afterwards [escape the encrypted value according to FileVault DocView rules][filevault-escape].
 
 In order to use specific keys (e.g. when targeting multiple environments with different master keys in the same build) use a suffix after `vltaemencrypt` like `vltaemencryptprod.env.MY_SECRET`.
 This will encrypt `MY_SECRET` with the master key provided in Maven property with name `AEM_KEY_PROD` or a same named environment variable (in that order). Note that the *suffix* (`prod` in this case) is automatically converted to uppercase letters before being used in the environment variable/property name.
@@ -96,4 +96,5 @@ the United States and/or other countries.
 [aem-cryptosupport]: https://developer.adobe.com/experience-manager/reference-materials/6-5/javadoc/com/adobe/granite/crypto/CryptoSupport.html
 [groovyconsole]: https://github.com/orbinson/aem-groovy-console
 [filevault-package-maven-plugin]: https://jackrabbit.apache.org/filevault-package-maven-plugin/index.html
-[filevault-filtering]: https://jackrabbit.apache.org/filevault-package-maven-plugin/filtering.html
+[filevault-filtering]: https://jackrabbit.apache.org/filevault-package-maven-plugin/filtering.html#Filtering_Extensions
+[filevault-escape]: https://jackrabbit.apache.org/filevault/docview.html#Escaping

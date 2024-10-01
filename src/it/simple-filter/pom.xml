@@ -37,7 +37,7 @@
             <plugin>
                 <groupId>org.apache.jackrabbit</groupId>
                 <artifactId>filevault-package-maven-plugin</artifactId>
-                <version>1.4.0-SNAPSHOT</version>
+                <version>1.4.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <enableJcrRootFiltering>true</enableJcrRootFiltering>
