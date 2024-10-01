@@ -9,7 +9,8 @@
 ## Overview
 
 This wrapper library allows to encrypt/decrypt with [AEM's CryptoSupport][aem-cryptosupport] outside AEM. The library provided by Adobe
-only works inside AEM/OSGi Runtimes. This wrapper adds some class loader tweaks and provides a simple API for constructing `CryptoSupport` objects.
+only works inside AEM/OSGi runtimes. This wrapper adds some class loader tweaks and provides a simple API for constructing `CryptoSupport` objects. 
+In addition it provides an extension for [filtering in filevault-package-maven-plugin][filevault-filtering] to easily create encrypted values during the Maven build of content packages.
 
 The encryption algorithm used internally is symmetrical **AES encryption (AES/CBC/PKCS5Padding)** with a **128 bit** key. Since it uses [Cypher Block Chaining](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CBC) a random initialisation vector is used to make the encrypted text always look different (for the same plaintext). It uses [BSAFE Crypto-J from RSA (now Dell)][bsafe-wikipedia] as implementation basis.
 
