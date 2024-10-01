@@ -42,7 +42,7 @@ This library can be used as extension for the filevault-package-maven plugin or 
 
 This library can be used with [`filevault-package-maven-plugin`][filevault-package-maven-plugin] in version 1.4.0 or newer to allow [resource filtering][filevault-filtering] with encryption support. This is useful to create encrypted values in content packages.
 
-The master key is looked up from either a Maven property with name `AEM_KEY` (or a same named environment variable) or `AEM_KEY_<SUFFIX>` in case a specific master key is referenced.
+The master key (base-64 encoded) is looked up from either a Maven property with name `AEM_KEY` (or a same named environment variable) or `AEM_KEY_<SUFFIX>` in case a specific master key is referenced.
 
 #### Configuration of filevault-package-maven-plugin
 
@@ -89,6 +89,22 @@ try (CryptoSupportFactory cryptoSupportFactory = new CryptoSupportFactory(this.g
 }
 ```
 
+## Use Cases
+
+Several [AEM Cloud Service configurations][aem-cloudservice-configs] still access (encrypted) credentials from the repository (like [Dynamic Media configuration][dynamic-media-aem-config]) instead of leveraging interpolated OSGi configurations.
+Those can be automatically configured via content packages with the help of this FileVault extension.
+
+## Best Practices
+
+* Never store store either master keys or to be encrypted values (in clear text) in any source code management system like Git. They should always be injected via some secure means as environment variables.
+    * For CloudManager this is [secret pipeline variables][cloudmanager-pipelinevars], 
+    * for GitHub Actions this is [secrets][gha-secrets],
+    * Jenkins has a dedicated [Credentials API Plugin][jenkins-credentials-plugin] which is leveraged from several plugins.
+
+* Preferably use secret values in OSGi configuration which have [native support for interpolation with secrets in AEMaaCS](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/deploying/configuring-osgi#when-to-use-secret-environment-specific-configuration-values) instead of encrypting and storing sensitive values within the repository.
+
+* Don't overwrite/modify the default IMS configurations provided for integrations with other Adobe tools (like Adobe Analytics, Asset Compute, or Adobe Tags fka Adobe DTM).
+
 Adobe, and AEM are either registered trademarks or trademarks of Adobe in
 the United States and/or other countries.
 
@@ -97,4 +113,9 @@ the United States and/or other countries.
 [groovyconsole]: https://github.com/orbinson/aem-groovy-console
 [filevault-package-maven-plugin]: https://jackrabbit.apache.org/filevault-package-maven-plugin/index.html
 [filevault-filtering]: https://jackrabbit.apache.org/filevault-package-maven-plugin/filtering.html#Filtering_Extensions
-[filevault-escape]: https://jackrabbit.apache.org/filevault/docview.html#Escaping
+[filevault-escape]: https://jackrabbit.apache.org/filevault/docview.html#Escaping]
+[cloudmanager-pipelinevars]: https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/using-cloud-manager/cicd-pipelines/pipeline-variables
+[gha-secrets]: https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions
+[jenkins-credentials-plugin]: https://github.com/jenkinsci/credentials-plugin/tree/master/docs
+[dynamic-media-aem-config]: https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/dynamicmedia/config-dm#configuring-dynamic-media-cloud-services
+[aem-cloudservice-configs]: https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/extending-aem/extending-cloud-services/extending-cloud-config
