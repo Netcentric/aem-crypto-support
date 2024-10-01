@@ -30,6 +30,7 @@
     <scm>
         <connection>scm:git:ssh://git@github.com:Netcentric/aem-crypto-support.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:Netcentric/aem-crypto-support.git</developerConnection>
+        <tag>HEAD</tag>
         <url>https://github.com/Netcentric/aem-crypto-support</url>
     </scm>
 
