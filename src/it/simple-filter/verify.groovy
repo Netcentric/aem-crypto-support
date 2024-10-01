@@ -8,8 +8,8 @@ try (ZipFile zipFile = new ZipFile(file)) {
     try (InputStream input = zipFile.getInputStream(zipEntry)) {
         def root = new XmlSlurper().parse(input)
         assert(root.@escapedValue == "plainText")
-        assert(root.@encryptedValue.text() ==~ $/\{[a-z0-9]*\}/$)
-        assert(root.@encryptedValueCustom.text() ==~ $/\{[a-z0-9]*\}/$)
+        assert(root.@encryptedValue.text() ==~ $/\\\{[a-z0-9]*\}/$)
+        assert(root.@encryptedValueCustom.text() ==~ $/\\\{[a-z0-9]*\}/$)
         assert(root.@encryptedCustom.text() != root.@encryptedValueCustom.text())
     }
 }
