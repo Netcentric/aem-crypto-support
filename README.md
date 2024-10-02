@@ -97,10 +97,10 @@ Those can be automatically configured via content packages with the help of this
 
 ## Best Practices
 
-* Never store store either master keys or to be encrypted values (in clear text) in any source code management system like Git. They should always be injected via some secure means as environment variables.
+* Never store either master keys or to be encrypted values (in clear text) in any source code management system like Git. They should always be injected via some secure means as environment variables:
     * For CloudManager this is [secret pipeline variables][cloudmanager-pipelinevars], 
     * for GitHub Actions this is [secrets][gha-secrets],
-    * Jenkins has a dedicated [Credentials API Plugin][jenkins-credentials-plugin] which is leveraged from several plugins.
+    * Jenkins has a dedicated [Credentials API Plugin][jenkins-credentials-plugin].
 
 * Preferably use secret values in OSGi configuration which have [native support for interpolation with secrets in AEMaaCS](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/deploying/configuring-osgi#when-to-use-secret-environment-specific-configuration-values) instead of encrypting and storing sensitive values within the repository.
 
