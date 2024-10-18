@@ -106,6 +106,21 @@ Those can be automatically configured via content packages with the help of this
 
 * Don't overwrite/modify the default IMS configurations provided for integrations with other Adobe tools (like Adobe Analytics, Asset Compute, or Adobe Tags fka Adobe DTM).
 
+## Limitations
+
+AEMaaCS doesn't support [different mutable content packages for different environments](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/deploying/overview#mutable-content-packages). Although it is possible to use [CloudManager pipeline variables][cloudmanager-pipelinevars] to cater for differences in the master key between DEV and STAGE, this approach does not work for STAGE and PROD (because those share a common build artifact/pipeline).
+
+The only way to automate the deployment is manually modifying the encrypted properties via [Repoinit](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/deploying/overview#repoinit) with an OSGi configuration leveraging [secret environment-specific variables](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/deploying/configuring-osgi#when-to-use-secret-environment-specific-configuration-values), i.e. the same repoinit script can be used on all environments, as long as the actual secret value is set differently for those environments (with the relevant **encrypted** values).
+As dealing with repoinit is cumbersome, one should only adjust the relevant properties with it and leverage a common content package for the other common properties/child nodes.
+Just make sure to exclude the [environment-specific property in the filter rules](https://jackrabbit.apache.org/filevault/filter.html#Property_Filtering) because the order of installation is
+1. Repoinit
+2. Mutable Content Package Installation
+
+If someone comes up with either
+1. an enhanced [OSGi Configuration Plugin for interpolation with encryption](https://github.com/apache/felix-dev/blob/master/configadmin-plugins/interpolation/src/main/java/org/apache/felix/configadmin/plugin/interpolation/InterpolationConfigurationPlugin.java) or
+2. a [Repoinit extension](https://sling.apache.org/documentation/bundles/repository-initialization.html) to encrypt values
+please let me know.
+
 Adobe, and AEM are either registered trademarks or trademarks of Adobe in
 the United States and/or other countries.
 
