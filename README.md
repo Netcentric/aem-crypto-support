@@ -121,6 +121,10 @@ If someone comes up with either
 2. a [Repoinit extension](https://sling.apache.org/documentation/bundles/repository-initialization.html) to encrypt values
 please let me know.
 
+## Alternative Approach
+
+[CONGA](https://devops.wcm.io/conga/plugins/aem/handlebars-helpers.html) has support for encrypting values in handlebar templates. However, CONGA uses the default [SunJCE implementation](https://docs.oracle.com/en/java/javase/11/security/oracle-providers.html#GUID-A47B1249-593C-4C38-A0D0-68FA7681E0A7) for performing the `AES/CBC/PKCS5Padding` encryption instead of using the JSafe implementation used in AEM.
+
 Adobe, and AEM are either registered trademarks or trademarks of Adobe in
 the United States and/or other countries.
 
